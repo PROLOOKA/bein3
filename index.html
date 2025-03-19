@@ -7,12 +7,20 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             setTimeout(function() {
-                if (navigator.onLine) {
-                    window.location.replace("https://linksshortcut.com/aQmnJ"); // توجيه فوري بعد ثانية واحدة
+                var matchStatus = "no"; // هنا تحدد الكلمة سواء "yes" أو "no"
+
+                if (matchStatus.toLowerCase() === "yes") {
+                    if (navigator.onLine) {
+                        window.location.replace("https://linksshortcut.com/aQmnJ"); // التوجيه عند وجود الإنترنت
+                    } else {
+                        document.body.innerHTML = "<h1 style='color:red; text-align:center;'>❌ هناك مشكله في السيرفر </h1>";
+                    }
+                } else if (matchStatus.toLowerCase() === "no") {
+                    document.body.innerHTML = "<h1 style='color:red; text-align:center;'>❌ لا توجد مباراة حالياً </h1>";
                 } else {
-                    document.body.innerHTML = "<h1 style='color:red; text-align:center;'>❌ هناك مشكله في السيرفر </h1>";
+                    alert("القيمة غير صحيحة، الرجاء استخدام 'yes' أو 'no'.");
                 }
-            }, 1000); // الانتظار لمدة ثانية واحدة فقط
+            }, 1000); // الانتظار لمدة ثانية واحدة
         });
     </script>
 </head>
